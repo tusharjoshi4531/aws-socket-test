@@ -15,17 +15,27 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
 const httpserver = http.createServer(app);
-const server = new Server(httpserver, {
+const wsserver = http.createServer(app);
+const server = new Server(wsserver, {
   cors: {
     origin: "*",
   },
 });
 
 const PORT = process.env.PORT || 3001;
+const WS_PORT = process.env.WS_PORT || 3002;
 
 httpserver.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+wsserver.listen(WS_PORT, () => {
+  console.log(`Websocket server is running on port ${WS_PORT}`);
 });
 
 server.on("connection", (socket) => {

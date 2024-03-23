@@ -3,7 +3,8 @@ import { useState } from "react";
 import "./App.css";
 import { io } from "socket.io-client";
 
-const serverUrl = "http://localhost:8000";
+// const serverUrl = "http://3.109.132.88:8000";
+const serverUrl = "http://localhost:3002"
 const socket = io(serverUrl, {
   transports: ["websocket"],
 });
